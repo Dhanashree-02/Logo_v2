@@ -1,3 +1,8 @@
+import cap from "../assets/Shree graphics mockup/27/cap/Cap black.png"
+import cap1 from "../assets/Shree graphics mockup/27/cap/cap red.png"
+import cap2 from "../assets/Shree graphics mockup/27/cap/Cap white.png"
+import cap3 from "../assets/Shree graphics mockup/Chitronauts/Cap/cap black.png"
+
 const products = [
     {
       id: 1,
@@ -5,7 +10,7 @@ const products = [
       name: 'Embroidered Logo T-shirt',
       price: 499,
       description: 'High-quality T-shirt with custom embroidered logo.',
-      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTm7ZVQKknv0YM_V0xQFOyFAExtA1eosKfnSA&s',
+      image: cap,
     },
     {
       id: 2,
@@ -13,7 +18,7 @@ const products = [
       name: 'Branded Shirt with Logo',
       price: 899,
       description: 'Elegant shirt with stitched logo for professional look.',
-      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTP8sTVYE9hj6OpxekDry4_qnid_NnVcxu6Ww&s',
+      image: cap1,
     },
     {
       id: 3,
@@ -21,7 +26,7 @@ const products = [
       name: 'Cap with Embroidery',
       price: 299,
       description: 'Comfortable cap with custom logo embroidery.',
-      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBpbs7WFZuI31oNmxqj3RtC9JqCHx964WtTw&s',
+      image: cap2,
     },
     {
       id: 4,
@@ -29,9 +34,8 @@ const products = [
       name: 'Company Uniform with Logo',
       price: 1199,
       description: 'Custom uniform with stitched logo for your business.',
-      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStGCms3D0xczxeInYU5eJKPReAJBy-svCwJw&s',
+      image: cap3,
     },
   ];
   
   export default products;
-  

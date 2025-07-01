@@ -1,10 +1,14 @@
 .navbar {
   background-color: #fff;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-  position: relative;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Bottom shadow only */
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 100;
   font-family: 'Poppins', sans-serif;
   padding: 8px 15px;
+  width: 100%;
 }
 
 .navContainer {
@@ -13,13 +17,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
 }
 
 .logoImage {
   width: 85px;
   height: auto;
   transition: transform 0.3s ease;
-  margin-left: 0; /* Remove extra left space */
+  margin-left: 0;
 }
 
 .logoImage:hover {

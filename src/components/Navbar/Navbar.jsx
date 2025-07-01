@@ -79,7 +79,7 @@ const Navbar = () => {
 
 <li className={styles.menuItem}>
   <Link to="/contact" onClick={handleLinkClick}><FaEnvelope /> Contact</Link>
-</li>
+</li>w
 
 <li className={styles.menuItem}>
   <Link to="/cart" onClick={handleLinkClick}><FaShoppingCart /> Cart</Link>

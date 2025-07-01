@@ -6,6 +6,7 @@ import Contact from "./pages/Contact/Contact";
 import Home from "./pages/Home/Home";
 import ProductDetails from "./pages/ProductDetails/ProductDetails";
 import Services from "./pages/Services/Services";
+import Footer from "./components/Footer/Footer";
 
 const App = () => {
   const addToCart = (product) => {
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/clients" element={<Clients />} />
       </Routes>
+      <Footer/>
     </Router>
   );
 };

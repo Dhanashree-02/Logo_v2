@@ -21,17 +21,15 @@
 }
 
 .logoImage {
-  width: 85px;
+  width: 80px;
   height: auto;
   transition: transform 0.3s ease;
-  margin-left: 0;
 }
 
 .logoImage:hover {
   transform: scale(1.05);
 }
 
-/* Menu List */
 .menuList {
   list-style: none;
   display: flex;
@@ -71,7 +69,6 @@
   transform: translateY(-1px);
 }
 
-/* Dropdown Icon */
 .dropdownIcon {
   font-size: 11px;
   transition: transform 0.3s ease;
@@ -81,7 +78,6 @@
   transform: rotate(180deg);
 }
 
-/* Dropdown Menu */
 .dropdown {
   position: absolute;
   top: 35px;
@@ -120,7 +116,6 @@
   color: white;
 }
 
-/* Cart Link */
 .cartLink {
   display: flex;
   align-items: center;
@@ -138,7 +133,6 @@
   transform: scale(1.05);
 }
 
-/* Hamburger Styles */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -153,7 +147,7 @@
   transition: 0.3s ease;
 }
 
-/* Mobile Styles */
+/* Responsive: Tablets and Mobile */
 @media (max-width: 991px) {
   .menuList {
     position: absolute;
@@ -166,6 +160,8 @@
     display: none;
     padding: 15px 0;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    z-index: 99;
   }
 
   .menuList.active {
@@ -182,7 +178,7 @@
   .menuItem span {
     justify-content: center;
     width: 100%;
-    padding: 10px 0;
+    padding: 12px 0;
     font-size: 17px;
   }
 
@@ -208,7 +204,7 @@
   }
 
   .dropdown li a {
-    padding: 10px 0;
+    padding: 12px 0;
   }
 
   .cartLink {
@@ -219,5 +215,21 @@
 
   .hamburger {
     display: flex;
+  }
+}
+
+/* Small Devices: Extra tuning for very small screens */
+@media (max-width: 480px) {
+  .logoImage {
+    width: 65px;
+  }
+
+  .menuItem a,
+  .menuItem span {
+    font-size: 15px;
+  }
+
+  .dropdown li a {
+    font-size: 14px;
   }
 }

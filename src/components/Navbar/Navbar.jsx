@@ -85,7 +85,6 @@ const Navbar = () => {
   <Link to="/cart" onClick={handleLinkClick}><FaShoppingCart /> Cart</Link>
 </li>
 
-
         {/* Tshirt Dropdown */}
 <li className={`${styles.menuItem} ${activeMenu === "tshirt" ? styles.showDropdown : ""}`}>
   <span onClick={() => handleDropdownToggle("tshirt")}>

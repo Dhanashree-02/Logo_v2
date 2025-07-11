@@ -1,19 +1,26 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import {
+  FaChevronDown,
+  FaTshirt,
+  FaShoppingBag,
+  FaSuitcase,
+  FaWallet,
+  FaUserTie,
+} from "react-icons/fa";
 import styles from "./MainNavbar.module.css";
-import { FaChevronDown, FaTshirt, FaShoppingBag, FaSuitcase, FaWallet, FaUserTie } from "react-icons/fa";
 
-const ProductNavbar = () => {
+const MainNavbar = () => {
   const [activeMenu, setActiveMenu] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-    setActiveMenu(null);
+    if (!isMenuOpen) setActiveMenu(null); // close dropdowns on toggle
   };
 
   const handleDropdownToggle = (menu) => {
-    setActiveMenu(activeMenu === menu ? null : menu);
+    setActiveMenu((prevMenu) => (prevMenu === menu ? null : menu));
   };
 
   const handleLinkClick = () => {
@@ -32,83 +39,103 @@ const ProductNavbar = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const navItems = [
+    {
+      icon: <FaTshirt />,
+      title: "Tshirts",
+      key: "tshirt",
+      links: [
+        { name: "Round Neck", to: "/round_neck" },
+        { name: "V-Neck", to: "/v_neck" },
+        { name: "Pool T-Shirt", to: "/pool_tshirt" },
+        { name: "Cut and Sew", to: "/cutSew" },
+        { name: "Basic Pool", to: "/basicpool" },
+      ],
+    },
+    {
+      icon: <FaShoppingBag />,
+      title: "Apparels",
+      key: "apparels",
+      links: [
+        { name: "Cap", to: "/cap" },
+        { name: "Jackets", to: "/jackets" },
+        { name: "Sweatshirt", to: "/sweatshirt" },
+        { name: "Denim Shirt", to: "/denimShirt" },
+        { name: "Windcheaters", to: "/windcheaters" },
+      ],
+    },
+    {
+      icon: <FaSuitcase />,
+      title: "Travel",
+      key: "travel",
+      links: [
+        { name: "Hand Bag", to: "/handbag" },
+        { name: "Strolley Bags", to: "/strolleybag" },
+        { name: "Travel Bags", to: "/travelbag" },
+        { name: "Back Packs", to: "/backpacks" },
+        { name: "Laptop Bags", to: "/laptopbag" },
+      ],
+    },
+    {
+      icon: <FaWallet />,
+      title: "Leather",
+      key: "leather",
+      links: [
+        { name: "Office Bags", to: "/leatherofficebag" },
+        { name: "Wallets", to: "/leatherwallets" },
+      ],
+    },
+    {
+      icon: <FaUserTie />,
+      title: "Uniforms",
+      key: "uniforms",
+      links: [
+        { name: "School Uniforms", to: "/school" },
+        { name: "Corporate", to: "/corporate" },
+      ],
+    },
+  ];
+
   return (
     <nav className={styles.navbar}>
       <div className={styles.navContainer}>
+        {/* Hamburger for mobile */}
         <div className={styles.hamburger} onClick={toggleMenu}>
           <div className={styles.bar}></div>
           <div className={styles.bar}></div>
           <div className={styles.bar}></div>
         </div>
 
+        {/* Menu */}
         <ul className={`${styles.menuList} ${isMenuOpen ? styles.active : ""}`}>
-          {/** Tshirt Dropdown */}
-          <li className={`${styles.menuItem} ${activeMenu === "tshirt" ? styles.showDropdown : ""}`}>
-            <span onClick={() => handleDropdownToggle("tshirt")}> <FaTshirt /> Tshirts <FaChevronDown className={styles.dropdownIcon} /></span>
-            {activeMenu === "tshirt" && (
-              <ul className={styles.dropdown}>
-                <li><Link to="/round_neck" onClick={handleLinkClick}>Round Neck</Link></li>
-                <li><Link to="/v_neck" onClick={handleLinkClick}>V-Neck</Link></li>
-                <li><Link to="/pool_tshirt" onClick={handleLinkClick}>Pool T-Shirt</Link></li>
-                <li><Link to="/cutSew" onClick={handleLinkClick}>Cut and Sew</Link></li>
-                <li><Link to="/basicpool" onClick={handleLinkClick}>Basic Pool</Link></li>
-              </ul>
-            )}
-          </li>
-
-          {/** Apparels */}
-          <li className={`${styles.menuItem} ${activeMenu === "apparels" ? styles.showDropdown : ""}`}>
-            <span onClick={() => handleDropdownToggle("apparels")}> <FaShoppingBag /> Apparels <FaChevronDown className={styles.dropdownIcon} /></span>
-            {activeMenu === "apparels" && (
-              <ul className={styles.dropdown}>
-                <li><Link to="/cap" onClick={handleLinkClick}>Cap</Link></li>
-                <li><Link to="/jackets" onClick={handleLinkClick}>Jackets</Link></li>
-                <li><Link to="/sweatshirt" onClick={handleLinkClick}>Sweatshirt</Link></li>
-                <li><Link to="/denimShirt" onClick={handleLinkClick}>Denim Shirt</Link></li>
-                <li><Link to="/windcheaters" onClick={handleLinkClick}>Windcheaters</Link></li>
-              </ul>
-            )}
-          </li>
-
-          {/** Travel */}
-          <li className={`${styles.menuItem} ${activeMenu === "travel" ? styles.showDropdown : ""}`}>
-            <span onClick={() => handleDropdownToggle("travel")}> <FaSuitcase /> Travel <FaChevronDown className={styles.dropdownIcon} /></span>
-            {activeMenu === "travel" && (
-              <ul className={styles.dropdown}>
-                <li><Link to="/handbag" onClick={handleLinkClick}>Hand Bag</Link></li>
-                <li><Link to="/strolleybag" onClick={handleLinkClick}>Strolley Bags</Link></li>
-                <li><Link to="/travelbag" onClick={handleLinkClick}>Travel Bags</Link></li>
-                <li><Link to="/backpacks" onClick={handleLinkClick}>Back Packs</Link></li>
-                <li><Link to="/laptopbag" onClick={handleLinkClick}>Laptop Bags</Link></li>
-              </ul>
-            )}
-          </li>
-
-          {/** Leather */}
-          <li className={`${styles.menuItem} ${activeMenu === "leather" ? styles.showDropdown : ""}`}>
-            <span onClick={() => handleDropdownToggle("leather")}> <FaWallet /> Leather <FaChevronDown className={styles.dropdownIcon} /></span>
-            {activeMenu === "leather" && (
-              <ul className={styles.dropdown}>
-                <li><Link to="/leatherofficebag" onClick={handleLinkClick}>Office Bags</Link></li>
-                <li><Link to="/leatherwallets" onClick={handleLinkClick}>Wallets</Link></li>
-              </ul>
-            )}
-          </li>
-
-          {/** Uniforms */}
-          <li className={`${styles.menuItem} ${activeMenu === "uniforms" ? styles.showDropdown : ""}`}>
-            <span onClick={() => handleDropdownToggle("uniforms")}> <FaUserTie /> Uniforms <FaChevronDown className={styles.dropdownIcon} /></span>
-            {activeMenu === "uniforms" && (
-              <ul className={styles.dropdown}>
-                <li><Link to="/school" onClick={handleLinkClick}>School Uniforms</Link></li>
-                <li><Link to="/corporate" onClick={handleLinkClick}>Corporate</Link></li>
-              </ul>
-            )}
-          </li>
+          {navItems.map((item) => (
+            <li
+              key={item.key}
+              className={`${styles.menuItem} ${
+                activeMenu === item.key ? styles.showDropdown : ""
+              }`}
+            >
+              <span onClick={() => handleDropdownToggle(item.key)}>
+                {item.icon} {item.title}{" "}
+                <FaChevronDown className={styles.dropdownIcon} />
+              </span>
+              {activeMenu === item.key && (
+                <ul className={styles.dropdown}>
+                  {item.links.map((link) => (
+                    <li key={link.to}>
+                      <Link to={link.to} onClick={handleLinkClick}>
+                        {link.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ))}
         </ul>
       </div>
     </nav>
   );
 };
 
-export default ProductNavbar;
+export default MainNavbar;

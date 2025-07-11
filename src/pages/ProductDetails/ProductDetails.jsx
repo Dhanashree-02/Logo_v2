@@ -1,10 +1,12 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import products from "../../data/products";
 import styles from "./ProductDetails.module.css";
+import { FaArrowLeft, FaCartPlus } from "react-icons/fa";
 
-function ProductDetails({ addToCart }) {
+function ProductDetails({ addToCart = () => {} }) {
   const { id } = useParams();
+  const navigate = useNavigate();
   const product = products.find((p) => p.id === parseInt(id));
 
   const [backgroundPosition, setBackgroundPosition] = useState("0% 0%");
@@ -17,13 +19,15 @@ function ProductDetails({ addToCart }) {
     setBackgroundPosition(`${x}% ${y}%`);
   };
 
-  if (!product) return <h2>Product not found</h2>;
+  if (!product) return <h2 className={styles.notFound}>Product not found</h2>;
 
   return (
     <div className={styles.productDetails}>
+      <button className={styles.backBtn} onClick={() => navigate(-1)}>
+        <FaArrowLeft /> Go Back
+      </button>
+
       <div className={styles.mainContainer}>
-        
-        {/* Normal Image */}
         <div
           className={styles.imageContainer}
           onMouseMove={handleMouseMove}
@@ -36,7 +40,6 @@ function ProductDetails({ addToCart }) {
           <img src={product.image} alt={product.name} />
         </div>
 
-        {/* Zoomed Preview - show only on hover */}
         {isHovering && (
           <div
             className={styles.zoomPreview}
@@ -48,10 +51,19 @@ function ProductDetails({ addToCart }) {
         )}
       </div>
 
-      <h2>{product.name}</h2>
-      <p>₹{product.price}</p>
-      <p>{product.description}</p>
-      <button onClick={() => addToCart(product)}>Add to Cart</button>
+      <div className={styles.info}>
+        <p className={styles.category}>{product.category}</p>
+        <h2 className={styles.name}>{product.name}</h2>
+        <p className={styles.price}>₹{product.price}</p>
+        <p className={styles.description}>{product.description}</p>
+
+        <button
+          className={styles.cartBtn}
+          onClick={() => addToCart(product)}
+        >
+          <FaCartPlus /> Add to Cart
+        </button>
+      </div>
     </div>
   );
 }

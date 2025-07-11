@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/Shree_Graphics_Design.png";
 import styles from "./Navbar.module.css";
-import { FaChevronDown, FaShoppingCart, FaHome, FaInfoCircle, FaServicestack, FaUserFriends, FaEnvelope } from "react-icons/fa";
-import { FaTshirt, FaShoppingBag, FaSuitcase, FaWallet, FaUserTie } from "react-icons/fa";
+import { FaChevronDown, FaShoppingCart, FaHome, FaInfoCircle, FaServicestack, FaUserFriends, FaEnvelope, FaHeart, FaUserTie  } from "react-icons/fa";
+import { FaTshirt, FaShoppingBag, FaSuitcase, FaWallet } from "react-icons/fa";
 
 
 const Navbar = () => {
@@ -83,6 +83,10 @@ const Navbar = () => {
 
 <li className={styles.menuItem}>
   <Link to="/cart" onClick={handleLinkClick}><FaShoppingCart /> Cart</Link>
+</li>
+
+<li className={styles.menuItem}>
+  <Link to="/wishlist" onClick={handleLinkClick}><FaHeart /> Wishlist</Link>
 </li>
 
         {/* Tshirt Dropdown */}
@@ -173,7 +177,17 @@ const Navbar = () => {
   )}
 </li>
 
-       
+<li className={`${styles.menuItem} ${activeMenu === "auth" ? styles.showDropdown : ""}`}>
+  <span onClick={() => handleDropdownToggle("auth")}>
+    <FaUserTie /> Login <FaChevronDown className={styles.dropdownIcon} />
+  </span>
+  {activeMenu === "auth" && (
+    <ul className={styles.dropdown}>
+      <li><Link to="/login" onClick={handleLinkClick}>Login</Link></li>
+      <li><Link to="/signup" onClick={handleLinkClick}>Sign Up</Link></li>
+    </ul>
+  )}
+</li>     
 
 
         </ul>

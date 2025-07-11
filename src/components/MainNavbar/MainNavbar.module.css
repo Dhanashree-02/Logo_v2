@@ -1,0 +1,151 @@
+.navbar {
+  background-color: #f9f9f9;
+  position: sticky;
+  top: 80px; /* Adjust if your top navbar height differs */
+  z-index: 999;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+  padding: 10px 15px;
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+}
+
+.navContainer {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.bar {
+  width: 22px;
+  height: 2.5px;
+  background-color: #333;
+}
+
+.menuList {
+  display: flex;
+  list-style: none;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.2rem;
+  width: 100%;
+  margin-top: 5px;
+}
+
+.menuItem {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menuItem span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 500;
+  font-size: 15px;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.menuItem span:hover {
+  color: #ff6600;
+}
+
+.dropdownIcon {
+  font-size: 12px;
+  transition: transform 0.3s;
+}
+
+.menuItem.showDropdown .dropdownIcon {
+  transform: rotate(180deg);
+}
+
+.dropdown {
+  position: absolute;
+  top: 30px;
+  background-color: white;
+  border: 1px solid #eee;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  padding: 8px 0;
+  display: none;
+  flex-direction: column;
+  z-index: 999;
+  min-width: 180px;
+}
+
+.menuItem.showDropdown .dropdown {
+  display: flex;
+}
+
+.dropdown li {
+  padding: 8px 12px;
+  white-space: nowrap;
+}
+
+.dropdown li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+  transition: 0.3s ease;
+  border-radius: 4px;
+}
+
+.dropdown li a:hover {
+  background-color: #ff6600;
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .menuList {
+    flex-direction: column;
+    display: none;
+    background-color: #fff;
+    width: 100%;
+    margin-top: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    padding: 10px 0;
+  }
+
+  .menuList.active {
+    display: flex;
+  }
+
+  .menuItem span {
+    font-size: 16px;
+    justify-content: center;
+  }
+
+  .dropdown {
+    position: static;
+    box-shadow: none;
+    border: none;
+    background: #f9f9f9;
+    padding: 0;
+  }
+
+  .dropdown li {
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  .dropdown li a {
+    padding: 10px 0;
+  }
+}

@@ -1,10 +1,26 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import products from "../../data/products";
 import Hero from "../../components/Hero/Hero";
 import styles from "./Home.module.css";
-import { FaCheckCircle, FaStar, FaTruck, FaGift, FaWallet, FaUserFriends } from "react-icons/fa";
+import {
+  FaCheckCircle,
+  FaStar,
+  FaTruck,
+  FaGift,
+  FaWallet,
+  FaUserFriends,
+  FaCartPlus,
+} from "react-icons/fa";
 
 const Home = () => {
+  const [setCart] = useState([]);
+
+  const addToCart = (product) => {
+    setCart((prevCart) => [...prevCart, product]);
+    alert(`${product.name} added to cart!`);
+  };
+
   return (
     <div className={styles.container}>
       {/* Hero Section */}
@@ -23,9 +39,17 @@ const Home = () => {
             <img src={product.image} alt={product.name} />
             <h3>{product.name}</h3>
             <p>₹{product.price}</p>
-            <Link to={`/product/${product.id}`}>
-              <button className={styles.button}>View Details</button>
-            </Link>
+            <div className={styles.productButtons}>
+              <Link to={`/product/${product.id}`}>
+                <button className={styles.viewBtn}>View Details</button>
+              </Link>
+              <button
+                onClick={() => addToCart(product)}
+                className={styles.cartBtn}
+              >
+                <FaCartPlus /> Add to Cart
+              </button>
+            </div>
           </div>
         ))}
       </div>
@@ -58,26 +82,22 @@ const Home = () => {
         <p>
           We deliver premium products with competitive pricing and unmatched customer satisfaction to help your brand stand out.
         </p>
-
         <ul className={styles.whyList}>
           <li className={styles.whyItem}>
             <FaStar className={styles.icon} />
             <h4>Premium Quality</h4>
             <p>We never compromise on the quality of materials or printing.</p>
           </li>
-
           <li className={styles.whyItem}>
             <FaTruck className={styles.icon} />
             <h4>On-Time Delivery</h4>
             <p>We ensure your products are delivered promptly, every time.</p>
           </li>
-
           <li className={styles.whyItem}>
             <FaWallet className={styles.icon} />
             <h4>Competitive Pricing</h4>
             <p>Affordable solutions without sacrificing product excellence.</p>
           </li>
-
           <li className={styles.whyItem}>
             <FaUserFriends className={styles.icon} />
             <h4>Customer Focused</h4>

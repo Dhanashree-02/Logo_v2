@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import {
   FaCartPlus,
   FaHeart,
@@ -13,6 +13,7 @@ import styles from "./Products.module.css";
 import { useCart } from "../../context/CartContext";
 
 const Products = () => {
+  const { category } = useParams(); // e.g., 'round_neck', 'pool_tshirt'
   const {
     addToCart,
     wishlist,
@@ -20,21 +21,27 @@ const Products = () => {
     removeFromWishlist,
   } = useCart();
 
-  const [selectedCategory, setSelectedCategory] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedMainCategory, setSelectedMainCategory] = useState("All");
   const productsPerPage = 8;
 
-  // Filtered products
+  // Filter products using categoryKey instead of category
   const filteredProducts = productsData.filter((product) => {
-    const matchesCategory = selectedCategory
-      ? product.category === selectedCategory
-      : true;
+    const matchesCategory = category ? product.categoryKey === category : true;
+
+    const matchesMainCategory =
+      selectedMainCategory === "All" ||
+      product.category === selectedMainCategory;
+
     const matchesSearch = product.name
       .toLowerCase()
       .includes(searchTerm.toLowerCase());
-    return matchesCategory && matchesSearch;
+
+    return matchesCategory && matchesMainCategory && matchesSearch;
   });
+
+
 
   // Pagination logic
   const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
@@ -49,17 +56,20 @@ const Products = () => {
     }
   };
 
+  useEffect(() => {
+    setCurrentPage(1); // Reset to page 1 when category changes
+  }, [category]);
+
   return (
     <div className={styles.productsContainer}>
-      {/* Header and filters */}
       <div className={styles.header}>
         <h2 className={styles.heading}>Our Products</h2>
         <div className={styles.filters}>
           <select
-            value={selectedCategory}
-            onChange={(e) => setSelectedCategory(e.target.value)}
+            value={selectedMainCategory}
+            onChange={(e) => setSelectedMainCategory(e.target.value)}
           >
-            <option value="">All Categories</option>
+            <option value="All">All Categories</option>
             <option value="Tshirts">Tshirts</option>
             <option value="Apparels">Apparels</option>
             <option value="Travel">Travel</option>
@@ -75,53 +85,49 @@ const Products = () => {
         </div>
       </div>
 
-      {/* Products */}
       <div className={styles.productGrid}>
-        {paginatedProducts.map((product) => (
-          <div className={styles.card} key={product.id}>
-            <img src={product.image} alt={product.name} />
-            <div
-              className={styles.wishlistIcon}
-              onClick={() =>
-                wishlist.includes(product.id)
-                  ? removeFromWishlist(product.id)
-                  : addToWishlist(product.id)
-              }
-              title="Toggle Wishlist"
-            >
-              {wishlist.includes(product.id) ? (
-                <FaHeart color="red" />
-              ) : (
-                <FaRegHeart />
-              )}
-            </div>
-            <h4>{product.category}</h4>
-            <h3>{product.name}</h3>
-            <p>₹{product.price}</p>
-
-            {/* Static stars */}
-            <div className={styles.stars}>
-              {[...Array(5)].map((_, i) => (
-                <FaStar key={i} color={i < 4 ? "#ffcc00" : "#ccc"} />
-              ))}
-            </div>
-
-            <div className={styles.productButtons}>
-              <Link to={`/product/${product.id}`} className={styles.link}>
-                <button type="button" className={styles.viewBtn}>
-                  View Details
-                </button>
-              </Link>
-              <button
-                type="button"
-                onClick={() => addToCart(product)}
-                className={styles.cartBtn}
+        {paginatedProducts.length === 0 ? (
+          <p>No products found.</p>
+        ) : (
+          paginatedProducts.map((product) => (
+            <div className={styles.card} key={product.id}>
+              <img src={product.image} alt={product.name} />
+              <div
+                className={styles.wishlistIcon}
+                onClick={() =>
+                  wishlist.includes(product.id)
+                    ? removeFromWishlist(product.id)
+                    : addToWishlist(product.id)
+                }
               >
-                <FaCartPlus /> Add to Cart
-              </button>
+                {wishlist.includes(product.id) ? (
+                  <FaHeart color="red" />
+                ) : (
+                  <FaRegHeart />
+                )}
+              </div>
+              <h4>{product.category}</h4>
+              <h3>{product.name}</h3>
+              <p>₹{product.price}</p>
+              <div className={styles.stars}>
+                {[...Array(5)].map((_, i) => (
+                  <FaStar key={i} color={i < 4 ? "#ffcc00" : "#ccc"} />
+                ))}
+              </div>
+              <div className={styles.productButtons}>
+                <Link to={`/product/${product.id}`}>
+                  <button className={styles.viewBtn}>View Details</button>
+                </Link>
+                <button
+                  onClick={() => addToCart(product)}
+                  className={styles.cartBtn}
+                >
+                  <FaCartPlus /> Add to Cart
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
+          ))
+        )}
       </div>
 
       {/* Pagination */}
@@ -130,7 +136,6 @@ const Products = () => {
           <button
             onClick={() => handlePageChange(currentPage - 1)}
             disabled={currentPage === 1}
-            className={styles.pageBtn}
           >
             <FaChevronLeft />
           </button>
@@ -138,9 +143,9 @@ const Products = () => {
             <button
               key={index}
               onClick={() => handlePageChange(index + 1)}
-              className={`${styles.pageBtn} ${
+              className={
                 currentPage === index + 1 ? styles.activePage : ""
-              }`}
+              }
             >
               {index + 1}
             </button>
@@ -148,7 +153,6 @@ const Products = () => {
           <button
             onClick={() => handlePageChange(currentPage + 1)}
             disabled={currentPage === totalPages}
-            className={styles.pageBtn}
           >
             <FaChevronRight />
           </button>

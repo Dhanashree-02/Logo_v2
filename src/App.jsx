@@ -19,6 +19,7 @@ import Signup from "./components/Login/Signup";
 import ProductDetails from "./pages/ProductDetails/ProductDetails";
 import Cart from "./pages/Cart/Cart";
 
+
 // Scroll to top on route change
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -28,7 +29,7 @@ const ScrollToTop = () => {
   return null;
 };
 
-// Layout component
+// Layout wrapper to conditionally show MainNavbar
 const Layout = ({ children }) => {
   const location = useLocation();
 
@@ -55,7 +56,7 @@ const Layout = ({ children }) => {
     "/leatherwallets",
     "/school",
     "/corporate",
-    "/product" // includes dynamic /product/:id
+    "/product"
   ];
 
   const showMainNavbar = showMainNavbarRoutes.some((route) =>
@@ -72,6 +73,7 @@ const Layout = ({ children }) => {
   );
 };
 
+// App Component
 const App = () => {
   return (
     <Router>
@@ -85,8 +87,13 @@ const App = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          
+          {/* Products */}
           <Route path="/products" element={<Products />} />
+          <Route path="/products/category/:category" element={<Products />} />
           <Route path="/product/:id" element={<ProductDetails />} />
+          
+          {/* Cart / Wishlist */}
           <Route path="/cart" element={<Cart />} />
           <Route path="/wishlist" element={<Wishlist />} />
         </Routes>

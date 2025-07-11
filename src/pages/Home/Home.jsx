@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import products from "../../data/products";
+import Products  from "../../components/Products/Products"
 import Hero from "../../components/Hero/Hero";
 import styles from "./Home.module.css";
 import {
@@ -33,26 +33,7 @@ const Home = () => {
       </p>
 
       {/* Product Showcase */}
-      <div className={styles.productGrid}>
-        {products.map((product) => (
-          <div className={styles.productCard} key={product.id}>
-            <img src={product.image} alt={product.name} />
-            <h3>{product.name}</h3>
-            <p>₹{product.price}</p>
-            <div className={styles.productButtons}>
-              <Link to={`/product/${product.id}`}>
-                <button className={styles.viewBtn}>View Details</button>
-              </Link>
-              <button
-                onClick={() => addToCart(product)}
-                className={styles.cartBtn}
-              >
-                <FaCartPlus /> Add to Cart
-              </button>
-            </div>
-          </div>
-        ))}
-      </div>
+    <Products />  
 
       {/* Featured Services */}
       <section className={styles.servicesSection}>

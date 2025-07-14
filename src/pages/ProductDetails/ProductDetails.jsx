@@ -3,12 +3,14 @@ import { useParams, useNavigate } from "react-router-dom";
 import products from "../../data/products";
 import styles from "./ProductDetails.module.css";
 import { FaArrowLeft, FaCartPlus } from "react-icons/fa";
+import { useCart } from "../../context/CartContext"; // ✅
 
-function ProductDetails({ addToCart = () => {} }) {
+function ProductDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const product = products.find((p) => p.id === parseInt(id));
+  const { addToCart } = useCart(); // ✅
 
+  const product = products.find((p) => p.id === parseInt(id));
   const [backgroundPosition, setBackgroundPosition] = useState("0% 0%");
   const [isHovering, setIsHovering] = useState(false);
 

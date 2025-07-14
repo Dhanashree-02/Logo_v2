@@ -1,0 +1,29 @@
+.detailsContainer {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1rem;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .image {
+    width: 100%;
+    max-width: 300px;
+    margin: 1rem auto;
+  }
+  
+  .description {
+    font-size: 1.1rem;
+    color: #444;
+  }
+  
+  .backBtn {
+    background: #333;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    border-radius: 6px;
+  }
+  

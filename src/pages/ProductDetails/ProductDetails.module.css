@@ -113,3 +113,7 @@
   color: gray;
   padding: 2rem;
 }
+
+a {
+  text-decoration: none;
+}

@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import ClientDetails from "./pages/Clients/ClientDetails"; 
 
 // Components
 import TopNavbar from "./components/TopNavbar/TopNavbar";
@@ -84,6 +85,8 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/clients" element={<Clients />} />
+          <Route path="/client/:id" element={<ClientDetails />} />
+
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />

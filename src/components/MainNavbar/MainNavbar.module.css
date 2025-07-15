@@ -17,7 +17,6 @@
   align-items: center;
 }
 
-/* Hamburger for mobile */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -62,12 +61,13 @@
   color: #333;
   padding: 6px 10px;
   border-radius: 5px;
-  transition: 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .menuItem span:hover {
+  background: linear-gradient(135deg, #ff6600, #ff944d);
   color: #fff;
-  background-color: #ff6600;
+  transform: scale(1.03);
 }
 
 .dropdownIcon {
@@ -81,7 +81,7 @@
 
 .dropdown {
   position: absolute;
-  top: 40px;
+  top: 42px;
   background-color: #fff;
   border: 1px solid #eee;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
@@ -91,32 +91,29 @@
   flex-direction: column;
   z-index: 1000;
   min-width: 180px;
-  list-style: none;
 }
 
-.menuItem.showDropdown .dropdown {
+.visible {
   display: flex;
 }
 
 .dropdown li {
   padding: 8px 16px;
   white-space: nowrap;
-  transition: background 0.3s;
 }
 
 .dropdown li a {
   text-decoration: none;
   color: #333;
   font-size: 14px;
-  border-radius: 5px;
   display: block;
-  transition: 0.3s ease;
+  transition: all 0.3s ease;
+  border-radius: 5px;
 }
 
 .dropdown li a:hover {
   background-color: #ff6600;
   color: #fff;
-  padding:5px;
 }
 
 /* Responsive Styles */
@@ -164,10 +161,4 @@
   .dropdown li a {
     padding: 10px;
   }
-}
-
-.menuItem span:hover {
-  background: linear-gradient(135deg, #ff6600, #ff944d);
-  color: #fff;
-  transform: scale(1.03);
 }

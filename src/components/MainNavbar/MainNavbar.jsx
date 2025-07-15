@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
+import { Link, useLocation } from "react-router-dom";
 import {
   FaChevronDown,
   FaTshirt,
@@ -13,14 +13,16 @@ import styles from "./MainNavbar.module.css";
 const MainNavbar = () => {
   const [activeMenu, setActiveMenu] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+  const dropdownRef = useRef();
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-    if (!isMenuOpen) setActiveMenu(null); // Close dropdowns when menu opens
+    setIsMenuOpen((prev) => !prev);
+    setActiveMenu(null);
   };
 
-  const handleDropdownToggle = (menu) => {
-    setActiveMenu((prevMenu) => (prevMenu === menu ? null : menu));
+  const handleDropdownToggle = (key) => {
+    setActiveMenu((prev) => (prev === key ? null : key));
   };
 
   const handleLinkClick = () => {
@@ -29,15 +31,20 @@ const MainNavbar = () => {
   };
 
   useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth > 768) {
-        setIsMenuOpen(false);
+    const closeDropdown = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
         setActiveMenu(null);
       }
     };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    document.addEventListener("mousedown", closeDropdown);
+    return () => document.removeEventListener("mousedown", closeDropdown);
   }, []);
+
+  useEffect(() => {
+    // Close menu on route change
+    setIsMenuOpen(false);
+    setActiveMenu(null);
+  }, [location.pathname]);
 
   const navItems = [
     {
@@ -99,15 +106,18 @@ const MainNavbar = () => {
   return (
     <nav className={styles.navbar}>
       <div className={styles.navContainer}>
-        {/* Hamburger for mobile */}
         <div className={styles.hamburger} onClick={toggleMenu}>
           <div className={styles.bar}></div>
           <div className={styles.bar}></div>
           <div className={styles.bar}></div>
         </div>
 
-        {/* Menu */}
-        <ul className={`${styles.menuList} ${isMenuOpen ? styles.active : ""}`}>
+        <ul
+          className={`${styles.menuList} ${
+            isMenuOpen ? styles.active : ""
+          }`}
+          ref={dropdownRef}
+        >
           {navItems.map((item) => (
             <li
               key={item.key}
@@ -119,17 +129,20 @@ const MainNavbar = () => {
                 {item.icon} {item.title}
                 <FaChevronDown className={styles.dropdownIcon} />
               </span>
-              {activeMenu === item.key && (
-                <ul className={styles.dropdown}>
-                  {item.links.map((link) => (
-                    <li key={link.to}>
-                      <Link to={link.to} onClick={handleLinkClick}>
-                        {link.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              )}
+
+              <ul
+                className={`${styles.dropdown} ${
+                  activeMenu === item.key ? styles.visible : ""
+                }`}
+              >
+                {item.links.map((link) => (
+                  <li key={link.to}>
+                    <Link to={link.to} onClick={handleLinkClick}>
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </li>
           ))}
         </ul>

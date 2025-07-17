@@ -22,9 +22,12 @@ const Home = () => {
   };
 
   return (
+    <>
+          {/* Hero Section */}
+
+          <Hero />
+
     <div className={styles.container}>
-      {/* Hero Section */}
-      <Hero />
 
       {/* Welcome Message */}
       <h1 className={styles.heading}>Welcome to Shree Graphics Design</h1>
@@ -96,6 +99,7 @@ const Home = () => {
         </Link>
       </div>
     </div>
+    </>
   );
 };
 

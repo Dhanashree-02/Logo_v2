@@ -67,10 +67,10 @@ const Client = () => {
           <h2>Why Choose Us?</h2>
           <p>We combine creativity, quality, and reliability to help businesses showcase their brand identity. With a team of experienced designers and production specialists, we ensure timely delivery and consistent quality.</p>
           <ul>
-            <li>✅ High-quality materials and finish</li>
-            <li>✅ Fast turnaround time</li>
-            <li>✅ Customization options</li>
-            <li>✅ Trusted by 100+ companies</li>
+            <li> High-quality materials and finish</li>
+            <li> Fast turnaround time</li>
+            <li> Customization options</li>
+            <li> Trusted by 100+ companies</li>
           </ul>
         </div>
       </div>

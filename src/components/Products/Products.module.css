@@ -1,62 +1,148 @@
 .productsContainer {
+  display: flex;
+  gap: 2rem;
   padding: 2rem;
   font-family: 'Poppins', sans-serif;
   max-width: 1600px;
   margin: 0 auto;
 }
 
+/* Sidebar for filters */
+
+/* Sidebar container */
+.sidebar {
+  width: 250px;
+  background-color: #ffffff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 150px;
+  height: fit-content;
+}
+
+/* Section heading */
+.sidebar h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+/* Select boxes & input styling */
+.sidebar select,
+.sidebar input[type="text"],
+.sidebar input[type="range"] {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fafafa;
+}
+
+/* Checkbox and label styling */
+.sidebar label {
+  display: block;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+/* Price label */
+.sidebar label:last-of-type {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+/* Responsive: Collapse sidebar on smaller screens */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    position: relative;
+    top: 0;
+    margin-bottom: 2rem;
+  }
+}
+
+/* Main content area: includes heading, sorting, product grid, pagination */
+.mainContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header: heading + top filters */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .heading {
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: #ff6600;
 }
 
 .filters {
   display: flex;
-  gap: 1rem;
   flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .filters select,
-.filters input {
+.filters input[type="text"] {
   padding: 10px 12px;
   font-size: 14px;
   border: 1px solid #ccc;
   border-radius: 4px;
   outline: none;
-  height: 45px;
-  min-width: 200px;
-  flex: 1;
+  height: 42px;
+  min-width: 180px;
   box-sizing: border-box;
 }
 
-.productGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
+/* Checkbox */
+.filters label {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  cursor: pointer;
+  gap: 6px;
+  user-select: none;
 }
 
+.filters input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #ff6600;
+  cursor: pointer;
+}
+
+/* Product Grid */
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+/* Product Card */
 .card {
   background: white;
   border: 1px solid #ccc;
   border-radius: 8px;
   text-align: center;
   padding: 1rem;
-  transform: scale(1);
+  position: relative;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  transform: scale(1.03);
+  transform: scale(1.015);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.08);
 }
 
 .card img {
@@ -66,6 +152,14 @@
   margin-bottom: 10px;
   border-radius: 4px;
   background-color: #f9f9f9;
+}
+
+.wishlistIcon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 .category {
@@ -85,8 +179,14 @@
 .price {
   font-size: 1rem;
   color: #444;
-  margin: 0;
   font-weight: bold;
+}
+
+.stars {
+  display: flex;
+  justify-content: center;
+  margin: 8px 0;
+  gap: 2px;
 }
 
 .productButtons {
@@ -128,44 +228,7 @@
   background-color: #000;
 }
 
-.link {
-  text-decoration: none;
-}
-
-.noResult {
-  text-align: center;
-  font-size: 16px;
-  color: gray;
-  margin-top: 2rem;
-}
-
-.wishlistIcon {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  cursor: pointer;
-  font-size: 20px;
-}
-
-.card {
-  position: relative;
-}
-
-.wishlistIcon {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.stars {
-  display: flex;
-  justify-content: center;
-  margin: 8px 0;
-  gap: 2px;
-}
-
+/* Pagination */
 .pagination {
   display: flex;
   justify-content: center;
@@ -189,4 +252,11 @@
   background-color: #ff6600;
   color: white;
   font-weight: bold;
+}
+
+.noResult {
+  text-align: center;
+  font-size: 16px;
+  color: gray;
+  margin-top: 2rem;
 }

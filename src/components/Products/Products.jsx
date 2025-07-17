@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import {
   FaCartPlus,
+  FaChevronLeft,
+  FaChevronRight,
   FaHeart,
   FaRegHeart,
   FaStar,
-  FaChevronLeft,
-  FaChevronRight,
 } from "react-icons/fa";
+import { Link, useParams } from "react-router-dom";
+import { useCart } from "../../context/CartContext";
 import productsData from "../../data/products";
 import styles from "./Products.module.css";
-import { useCart } from "../../context/CartContext";
 
 const Products = () => {
   const { category } = useParams();
@@ -166,42 +166,59 @@ const Products = () => {
         </div>
 
         <div className={styles.productGrid}>
-          {paginatedProducts.length === 0 ? (
-            <p className={styles.noResult}>No products found.</p>
-          ) : (
-            paginatedProducts.map((product) => (
-              <div className={styles.card} key={product.id}>
-                <img src={product.image} alt={product.name} />
-                <div
-                  className={styles.wishlistIcon}
-                  onClick={() =>
-                    wishlist.includes(product.id)
-                      ? removeFromWishlist(product.id)
-                      : addToWishlist(product.id)
-                  }
-                >
-                  {wishlist.includes(product.id) ? <FaHeart color="red" /> : <FaRegHeart />}
-                </div>
-                <h4 className={styles.category}>{product.category}</h4>
-                <h3 className={styles.name}>{product.name}</h3>
-                <p className={styles.price}>₹{product.price}</p>
-                <div className={styles.stars}>
-                  {[...Array(5)].map((_, i) => (
-                    <FaStar key={i} color={i < Math.floor(product.rating) ? "#ffcc00" : "#ccc"} />
-                  ))}
-                </div>
-                <div className={styles.productButtons}>
-                  <Link to={`/product/${product.id}`}>
-                    <button className={styles.viewBtn}>View Details</button>
-                  </Link>
-                  <button onClick={() => addToCart(product)} className={styles.cartBtn}>
-                    <FaCartPlus /> Add to Cart
-                  </button>
-                </div>
-              </div>
-            ))
-          )}
+  {paginatedProducts.length === 0 ? (
+    <p className={styles.noResult}>No products found.</p>
+  ) : (
+    paginatedProducts.map((product) => (
+      <div className={styles.card} key={product.id}>
+        <img src={product.images?.[0]} alt={product.name} />
+        
+        <div
+          className={styles.wishlistIcon}
+          onClick={() =>
+            wishlist.includes(product.id)
+              ? removeFromWishlist(product.id)
+              : addToWishlist(product.id)
+          }
+        >
+          {wishlist.includes(product.id) ? <FaHeart color="red" /> : <FaRegHeart />}
         </div>
+
+        <h4 className={styles.category}>{product.category}</h4>
+        <h3 className={styles.name}>{product.name}</h3>
+        <p className={styles.price}>₹{product.price}</p>
+
+        <div className={styles.stars}>
+          {[...Array(5)].map((_, i) => (
+            <FaStar key={i} color={i < Math.floor(product.rating) ? "#ffcc00" : "#ccc"} />
+          ))}
+        </div>
+
+        <div className={styles.colors}>
+          {product.colors.map((color, index) => (
+            <span key={index} className={styles.colorDot} style={{ backgroundColor: color.toLowerCase() }} title={color}></span>
+          ))}
+        </div>
+
+        <div className={styles.sizes}>
+          Sizes: {product.sizes.join(", ")}
+        </div>
+
+        <p className={styles.brand}>Brand: {product.brand}</p>
+
+        <div className={styles.productButtons}>
+          <Link to={`/product/${product.id}`}>
+            <button className={styles.viewBtn}>View Details</button>
+          </Link>
+          <button onClick={() => addToCart(product)} className={styles.cartBtn}>
+            <FaCartPlus /> Add to Cart
+          </button>
+        </div>
+      </div>
+    ))
+  )}
+</div>
+
 
         {/* Pagination */}
         {totalPages > 1 && (

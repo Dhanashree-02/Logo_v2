@@ -212,6 +212,11 @@
   transition: background-color 0.3s ease;
 }
 
+.productButtons a {
+  text-decoration: none;
+}
+
+
 .viewBtn {
   background-color: #ff6600;
   color: #fff;

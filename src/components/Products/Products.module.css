@@ -1,5 +1,7 @@
+/* Container Layout */
 .productsContainer {
   display: flex;
+  flex-wrap: wrap;
   gap: 2rem;
   padding: 2rem;
   font-family: 'Poppins', sans-serif;
@@ -7,28 +9,25 @@
   margin: 0 auto;
 }
 
-/* Sidebar for filters */
-
-/* Sidebar container */
+/* Sidebar Filter Panel */
 .sidebar {
   width: 250px;
-  background-color: #ffffff;
+  background-color: #fff;
   padding: 1rem;
   border-radius: 8px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
   position: sticky;
-  top: 150px;
+  top: 120px;
   height: fit-content;
+  z-index: 2;
 }
 
-/* Section heading */
 .sidebar h3 {
   font-size: 1.2rem;
   margin-bottom: 1rem;
   color: #333;
 }
 
-/* Select boxes & input styling */
 .sidebar select,
 .sidebar input[type="text"],
 .sidebar input[type="range"] {
@@ -39,9 +38,9 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   background-color: #fafafa;
+  box-sizing: border-box;
 }
 
-/* Checkbox and label styling */
 .sidebar label {
   display: block;
   margin-bottom: 1rem;
@@ -49,30 +48,31 @@
   color: #444;
 }
 
-/* Price label */
 .sidebar label:last-of-type {
   margin-bottom: 0.5rem;
   font-weight: 500;
 }
 
-/* Responsive: Collapse sidebar on smaller screens */
+/* Responsive Sidebar */
 @media (max-width: 768px) {
   .sidebar {
     width: 100%;
     position: relative;
     top: 0;
     margin-bottom: 2rem;
+    box-shadow: none;
+    border: 1px solid #eee;
   }
 }
 
-/* Main content area: includes heading, sorting, product grid, pagination */
+/* Main Content Area */
 .mainContent {
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 
-/* Header: heading + top filters */
+/* Header Row */
 .header {
   display: flex;
   justify-content: space-between;
@@ -87,6 +87,7 @@
   color: #ff6600;
 }
 
+/* Filter Inputs */
 .filters {
   display: flex;
   flex-wrap: wrap;
@@ -105,7 +106,6 @@
   box-sizing: border-box;
 }
 
-/* Checkbox */
 .filters label {
   display: flex;
   align-items: center;
@@ -129,7 +129,7 @@
   gap: 2rem;
 }
 
-/* Product Card */
+/* Product Card Styles */
 .card {
   background: white;
   border: 1px solid #ccc;
@@ -137,12 +137,12 @@
   text-align: center;
   padding: 1rem;
   position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .card:hover {
-  transform: scale(1.015);
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.08);
+  transform: scale(1.01);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
 }
 
 .card img {
@@ -189,11 +189,13 @@
   gap: 2px;
 }
 
+/* Buttons */
 .productButtons {
   display: flex;
   justify-content: center;
   gap: 10px;
   margin-top: 10px;
+  flex-wrap: wrap;
 }
 
 .viewBtn,
@@ -234,6 +236,7 @@
   justify-content: center;
   gap: 0.5rem;
   margin-top: 2rem;
+  flex-wrap: wrap;
 }
 
 .pageBtn {
@@ -259,4 +262,35 @@
   font-size: 16px;
   color: gray;
   margin-top: 2rem;
+}
+
+/* Mobile Optimization */
+@media (max-width: 480px) {
+  .productButtons {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .viewBtn,
+  .cartBtn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .productGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .productsContainer {
+    padding: 1rem;
+  }
+
+  .heading {
+    font-size: 1.5rem;
+  }
+
+  .sidebar h3 {
+    font-size: 1rem;
+  }
 }

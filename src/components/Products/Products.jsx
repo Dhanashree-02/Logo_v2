@@ -24,7 +24,7 @@ const Products = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedMainCategory, setSelectedMainCategory] = useState("All");
-  const productsPerPage = 8;
+  const productsPerPage = 10;
 
   // Filter products using categoryKey instead of category
   const filteredProducts = productsData.filter((product) => {

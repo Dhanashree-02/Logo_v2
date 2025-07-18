@@ -66,14 +66,14 @@ const TopNavbar = () => {
           }`}
         >
           {[
-            { to: "/", label: "Home", icon: <FaHome /> },
-            { to: "/about", label: "About", icon: <FaInfoCircle /> },
-            { to: "/services", label: "Services", icon: <FaServicestack /> },
-            { to: "/clients", label: "Clients", icon: <FaUserFriends /> },
-            { to: "/contact", label: "Contact", icon: <FaEnvelope /> },
-            { to: "/products", label: "Products", icon: <FaBoxOpen /> },
-            { to: "/login", label: "Login", icon: <FaSignInAlt /> },
-            { to: "/signup", label: "Sign Up", icon: <FaUserPlus /> },
+           { to: "/", label: "Home", icon: <FaHome /> },
+           { to: "/about", label: "About", icon: <FaInfoCircle /> },
+           { to: "/services", label: "Services", icon: <FaServicestack /> },
+           { to: "/products", label: "Products", icon: <FaBoxOpen /> },
+           { to: "/clients", label: "Clients", icon: <FaUserFriends /> },
+           { to: "/contact", label: "Contact", icon: <FaEnvelope /> },
+            // { to: "/login", label: "Login", icon: <FaSignInAlt /> },
+            // { to: "/signup", label: "Sign Up", icon: <FaUserPlus /> },
           ].map((item) => (
             <li className={styles.menuItem} key={item.to}>
               <NavLink
@@ -89,6 +89,24 @@ const TopNavbar = () => {
               </NavLink>
             </li>
           ))}
+
+        <li className={styles.menuItem}>
+            <NavLink
+              to="/wishlist"
+              className={({ isActive }) =>
+                `${styles.menuLink} ${isActive ? styles.activeLink : ""}`
+              }
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <FaHeart />
+              <span>Wishlist</span>
+              {wishlistCount > 0 && (
+                <span className={styles.wishlistBadge}>
+                  {wishlistCount}
+                </span>
+              )}
+            </NavLink>
+          </li>
 
           <li className={styles.menuItem}>
             <NavLink
@@ -108,21 +126,32 @@ const TopNavbar = () => {
 
           <li className={styles.menuItem}>
             <NavLink
-              to="/wishlist"
+              to="/login"
               className={({ isActive }) =>
                 `${styles.menuLink} ${isActive ? styles.activeLink : ""}`
               }
               onClick={() => setIsMenuOpen(false)}
             >
-              <FaHeart />
-              <span>Wishlist</span>
-              {wishlistCount > 0 && (
-                <span className={styles.wishlistBadge}>
-                  {wishlistCount}
-                </span>
-              )}
+              <FaSignInAlt />
+              <span>Login </span>
+
             </NavLink>
           </li>
+
+          <li className={styles.menuItem}>
+            <NavLink
+              to="/signup"
+              className={({ isActive }) =>
+                `${styles.menuLink} ${isActive ? styles.activeLink : ""}`
+              }
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <FaUserPlus />
+              <span>SignUp</span>
+             
+            </NavLink>
+          </li>
+
         </ul>
       </div>
     </nav>

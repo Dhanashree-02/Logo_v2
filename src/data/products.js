@@ -211,6 +211,25 @@ const products = [
     images: [cap5, cap4],
     description: "Sporty navy blue cap ideal for branding and sunny days."
   },
+  {
+    id: 20,
+    name: "Chitronauts Winter Jacket",
+    category: "Apparels",
+    categoryKey: "jackets",
+    price: 1299,
+    inStock: true,
+    rating: 4.7,
+    reviews: 28,
+    colors: ["Black", "Grey"],
+    sizes: ["S", "M", "L", "XL"],
+    popularity: 92,
+    brand: "Chitronauts",
+    tags: ["winter", "warm", "trendy"],
+    image: bag, // main display image
+    images: [bag1, bag2, bag3], // gallery
+    description: "Stylish and warm black winter jacket with a sleek design, perfect for chilly days and casual outings."
+  },
+  
   // Continue same format for Travel, Leather, Uniforms, etc.
 
     // --- Travel Bags ---
@@ -443,7 +462,7 @@ const products = [
     id: 24,
     name: "School Uniform Set (Boys)",
     category: "Uniforms",
-    categoryKey: "uniforms",
+    categoryKey: "school",
     price: 999,
     inStock: true,
     rating: 4.2,
@@ -503,6 +522,208 @@ const products = [
       "Professional chef uniform with breathable cotton fabric, double-breasted design, and heat resistance.",
   },
 
+  ////////
+  {
+    id: 27,
+    name: "Chitronauts Winter Jacket",
+    category: "Apparels",
+    categoryKey: "sweatshirt",
+    price: 1299,
+    inStock: true,
+    rating: 4.7,
+    reviews: 28,
+    colors: ["Black", "Grey"],
+    sizes: ["S", "M", "L", "XL"],
+    popularity: 92,
+    brand: "Chitronauts",
+    tags: ["winter", "warm", "trendy"],
+    image: bag2, // main display image
+    images: [bag1, bag, bag3], // gallery
+    description: "Stylish and warm black winter jacket with a sleek design, perfect for chilly days and casual outings."
+  },
+  {
+    id: 28,
+    name: "Chitronauts Winter Jacket",
+    category: "Apparels",
+    categoryKey: "denimShirt",
+    price: 1299,
+    inStock: true,
+    rating: 4.7,
+    reviews: 28,
+    colors: ["Black", "Grey"],
+    sizes: ["S", "M", "L", "XL"],
+    popularity: 92,
+    brand: "Chitronauts",
+    tags: ["winter", "warm", "trendy"],
+    image: bag3, // main display image
+    images: [bag3, bag2, bag], // gallery
+    description: "Stylish and warm black winter jacket with a sleek design, perfect for chilly days and casual outings."
+  },
+  {
+    id: 29,
+    name: "Chitronauts Winter Jacket",
+    category: "Apparels",
+    categoryKey: "windcheaters",
+    price: 1299,
+    inStock: true,
+    rating: 4.7,
+    reviews: 28,
+    colors: ["Black", "Grey"],
+    sizes: ["S", "M", "L", "XL"],
+    popularity: 92,
+    brand: "Chitronauts",
+    tags: ["winter", "warm", "trendy"],
+    image: hoodie, // main display image
+    images: [hoodie, bag2, bag], // gallery
+    description: "Stylish and warm black winter jacket with a sleek design, perfect for chilly days and casual outings."
+  },
+
+  {
+    id: 30,
+    name: "Chitronauts Winter Jacket",
+    category: "Apparels",
+    categoryKey: "handbag",
+    price: 1299,
+    inStock: true,
+    rating: 4.7,
+    reviews: 28,
+    colors: ["Black", "Grey"],
+    sizes: ["S", "M", "L", "XL"],
+    popularity: 92,
+    brand: "Chitronauts",
+    tags: ["winter", "warm", "trendy"],
+    image: hoodie, // main display image
+    images: [tshirt, bag2, bag], // gallery
+    description: "Stylish and warm black winter jacket with a sleek design, perfect for chilly days and casual outings."
+  },
+
+  {
+    id: 31,
+    name: "Chitronauts Winter Jacket",
+    category: "Apparels",
+    categoryKey: "strolleybag",
+    price: 1299,
+    inStock: true,
+    rating: 4.7,
+    reviews: 28,
+    colors: ["Black", "Grey"],
+    sizes: ["S", "M", "L", "XL"],
+    popularity: 92,
+    brand: "Chitronauts",
+    tags: ["winter", "warm", "trendy"],
+    image: hoodie, // main display image
+    images: [tshirt1, bag2, bag], // gallery
+    description: "Stylish and warm black winter jacket with a sleek design, perfect for chilly days and casual outings."
+  },
+
+  {
+    id: 32,
+    name: "Chitronauts Winter Jacket",
+    category: "Apparels",
+    categoryKey: "travelbag",
+    price: 1299,
+    inStock: true,
+    rating: 4.7,
+    reviews: 28,
+    colors: ["Black", "Grey"],
+    sizes: ["S", "M", "L", "XL"],
+    popularity: 92,
+    brand: "Chitronauts",
+    tags: ["winter", "warm", "trendy"],
+    image: hoodie, // main display image
+    images: [bag, bag2, hoodie], // gallery
+    description: "Stylish and warm black winter jacket with a sleek design, perfect for chilly days and casual outings."
+  },
+  {
+    id: 33,
+    name: "Chitronauts Winter Jacket",
+    category: "Apparels",
+    categoryKey: "backpacks",
+    price: 1299,
+    inStock: true,
+    rating: 4.7,
+    reviews: 28,
+    colors: ["Black", "Grey"],
+    sizes: ["S", "M", "L", "XL"],
+    popularity: 92,
+    brand: "Chitronauts",
+    tags: ["winter", "warm", "trendy"],
+    image: hoodie, // main display image
+    images: [bag, bag2, hoodie], // gallery
+    description: "Stylish and warm black winter jacket with a sleek design, perfect for chilly days and casual outings."
+  },
+  {
+    id: 34,
+    name: "Chitronauts Winter Jacket",
+    category: "Apparels",
+    categoryKey: "laptopbag",
+    price: 1299,
+    inStock: true,
+    rating: 4.7,
+    reviews: 28,
+    colors: ["Black", "Grey"],
+    sizes: ["S", "M", "L", "XL"],
+    popularity: 92,
+    brand: "Chitronauts",
+    tags: ["winter", "warm", "trendy"],
+    image: hoodie, // main display image
+    images: [bag, bag2, hoodie], // gallery
+    description: "Stylish and warm black winter jacket with a sleek design, perfect for chilly days and casual outings."
+  },
+  {
+    id: 35,
+    name: "Chitronauts Winter Jacket",
+    category: "Apparels",
+    categoryKey: "leatherofficebag",
+    price: 1299,
+    inStock: true,
+    rating: 4.7,
+    reviews: 28,
+    colors: ["Black", "Grey"],
+    sizes: ["S", "M", "L", "XL"],
+    popularity: 92,
+    brand: "Chitronauts",
+    tags: ["winter", "warm", "trendy"],
+    image: hoodie, // main display image
+    images: [bag, bag2, hoodie], // gallery
+    description: "Stylish and warm black winter jacket with a sleek design, perfect for chilly days and casual outings."
+  },
+  {
+    id: 36,
+    name: "Chitronauts Winter Jacket",
+    category: "Apparels",
+    categoryKey: "leatherwallets",
+    price: 1299,
+    inStock: true,
+    rating: 4.7,
+    reviews: 28,
+    colors: ["Black", "Grey"],
+    sizes: ["S", "M", "L", "XL"],
+    popularity: 92,
+    brand: "Chitronauts",
+    tags: ["winter", "warm", "trendy"],
+    image: hoodie, // main display image
+    images: [bag, bag2, hoodie], // gallery
+    description: "Stylish and warm black winter jacket with a sleek design, perfect for chilly days and casual outings."
+  },
+  {
+    id: 37,
+    name: "Chitronauts Winter Jacket",
+    category: "Apparels",
+    categoryKey: "corporate",
+    price: 1299,
+    inStock: true,
+    rating: 4.7,
+    reviews: 28,
+    colors: ["Black", "Grey"],
+    sizes: ["S", "M", "L", "XL"],
+    popularity: 92,
+    brand: "Chitronauts",   
+    tags: ["winter", "warm", "trendy"],
+    image: hoodie, // main display image
+    images: [bag, bag2, hoodie], // gallery
+    description: "Stylish and warm black winter jacket with a sleek design, perfect for chilly days and casual outings."
+  },
 ];
 
 export default products;

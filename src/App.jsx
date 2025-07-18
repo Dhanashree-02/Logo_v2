@@ -20,7 +20,6 @@ import Signup from "./components/Login/Signup";
 import ProductDetails from "./pages/ProductDetails/ProductDetails";
 import Cart from "./pages/Cart/Cart";
 
-
 // Scroll to top on route change
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -67,7 +66,8 @@ const Layout = ({ children }) => {
   return (
     <>
       <TopNavbar />
-      {showMainNavbar && <MainNavbar />}
+      <MainNavbar/>
+      {/* {showMainNavbar && <MainNavbar />} */}
       {children}
       <Footer />
     </>

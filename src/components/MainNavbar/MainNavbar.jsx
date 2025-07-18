@@ -1,13 +1,13 @@
-import { useState, useEffect, useRef } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
 import {
   FaChevronDown,
-  FaTshirt,
   FaShoppingBag,
   FaSuitcase,
-  FaWallet,
+  FaTshirt,
   FaUserTie,
+  FaWallet,
 } from "react-icons/fa";
+import { Link, useLocation } from "react-router-dom";
 import styles from "./MainNavbar.module.css";
 
 const MainNavbar = () => {
@@ -55,8 +55,8 @@ const MainNavbar = () => {
         { name: "Round Neck", to: "/products/category/round_neck" },
         { name: "V-Neck", to: "/products/category/v_neck" },
         { name: "Pool T-Shirt", to: "/products/category/pool_tshirt" },
-        { name: "Cut and Sew", to: "/products/category/cutSew" },
-        { name: "Basic Pool", to: "/products/category/basicpool" },
+        { name: "Cut and Sew", to: "/products/category/cut_sew" },
+        { name: "Basic Pool", to: "/products/category/basic_pool" },
       ],
     },
     {

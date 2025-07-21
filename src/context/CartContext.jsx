@@ -28,10 +28,17 @@ export const CartProvider = ({ children }) => {
     localStorage.setItem("wishlist", JSON.stringify(wishlist));
   }, [wishlist]);
 
-  // Cart methods
+  // ✅ Add to Cart with qty = 1 or increase if exists
   const addToCart = (product) => {
-    if (!cart.find((item) => item.id === product.id)) {
-      setCart([...cart, product]);
+    const existingItem = cart.find((item) => item.id === product.id);
+    if (existingItem) {
+      setCart((prevCart) =>
+        prevCart.map((item) =>
+          item.id === product.id ? { ...item, qty: item.qty + 1 } : item
+        )
+      );
+    } else {
+      setCart([...cart, { ...product, qty: 1 }]);
     }
   };
 
@@ -50,6 +57,26 @@ export const CartProvider = ({ children }) => {
     setWishlist(wishlist.filter((id) => id !== productId));
   };
 
+  // ✅ Increase quantity
+  const increaseQty = (id) => {
+    setCart((prevCart) =>
+      prevCart.map((item) =>
+        item.id === id ? { ...item, qty: item.qty + 1 } : item
+      )
+    );
+  };
+
+  // ✅ Decrease quantity, but not below 1
+  const decreaseQty = (id) => {
+    setCart((prevCart) =>
+      prevCart.map((item) =>
+        item.id === id && item.qty > 1
+          ? { ...item, qty: item.qty - 1 }
+          : item
+      )
+    );
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -59,6 +86,8 @@ export const CartProvider = ({ children }) => {
         wishlist,
         addToWishlist,
         removeFromWishlist,
+        increaseQty,
+        decreaseQty,
       }}
     >
       {children}

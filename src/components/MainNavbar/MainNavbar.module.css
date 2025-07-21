@@ -67,7 +67,7 @@
 .menuItem span:hover {
   background: linear-gradient(135deg, #ff6600, #ff944d);
   color: #fff;
-  transform: scale(1.03);
+  transform: scale(1.05);
 }
 
 .dropdownIcon {
@@ -91,13 +91,24 @@
   flex-direction: column;
   z-index: 1000;
   min-width: 180px;
+  transition: all 0.3s ease;
+
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: all 0.25s ease;
 }
 
 .visible {
   display: flex;
+
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 .dropdown li {
+  list-style: none;
   padding: 8px 16px;
   white-space: nowrap;
 }
@@ -109,10 +120,11 @@
   display: block;
   transition: all 0.3s ease;
   border-radius: 5px;
+  padding: 6px 10px;
 }
 
 .dropdown li a:hover {
-  background-color: #ff6600;
+  background: linear-gradient(135deg, #ff6600, #ff944d);
   color: #fff;
 }
 
@@ -151,14 +163,19 @@
     background-color: #f9f9f9;
     padding: 0;
     border-radius: 0;
+    margin-top: 5px;
   }
 
   .dropdown li {
     text-align: center;
     padding: 10px 0;
+    list-style: none;
   }
 
   .dropdown li a {
     padding: 10px;
+    font-size: 15px;
   }
 }
+
+

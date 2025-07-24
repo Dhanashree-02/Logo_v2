@@ -1,0 +1,67 @@
+
+/* Why Choose Us Section */
+.whySection {
+    background: #fff;
+    padding: 60px 20px;
+    text-align: center;
+  }
+  
+  .whySection h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #ff6600;
+  }
+  
+  .whySection p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 40px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .whyList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .whyItem {
+    flex: 1 1 220px;
+    max-width: 260px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .whyItem:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    /* transform: translateY(-5px); */
+  }
+  
+  .whyItem .icon {
+    font-size: 40px;
+    color: #ff6600;
+    margin-bottom: 15px;
+  }
+  
+  .whyItem h4 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 8px;
+  }
+  
+  .whyItem p {
+    font-size: 0.95rem;
+    color: #666;
+  }
+  

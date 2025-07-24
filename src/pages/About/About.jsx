@@ -1,6 +1,7 @@
 import styles from "./About.module.css";
 import aboutImage from "../../assets/About.jpg";
 import { FaStar, FaClock, FaRupeeSign, FaLightbulb, FaUserTie, FaShippingFast, FaThumbsUp } from "react-icons/fa";
+import WhyChooseUs from "../../components/WhyChooseUs/WhyChooseUs";
 
 const About = () => {
   return (
@@ -48,31 +49,7 @@ const About = () => {
       </section>
 
       {/* Why Choose Us */}
-      <section className={styles.whyChooseSection}>
-        <h2>Why Choose Us</h2>
-        <div className={styles.whyGrid}>
-          <div className={styles.whyItem}>
-            <FaStar className={styles.icon} />
-            <h4>Premium Quality</h4>
-            <p>Top-grade materials and advanced technology ensure superior quality products.</p>
-          </div>
-          <div className={styles.whyItem}>
-            <FaClock className={styles.icon} />
-            <h4>Timely Delivery</h4>
-            <p>We respect your deadlines and ensure every order is delivered on time.</p>
-          </div>
-          <div className={styles.whyItem}>
-            <FaRupeeSign className={styles.icon} />
-            <h4>Affordable Pricing</h4>
-            <p>Get the best value for your investment without compromising on quality.</p>
-          </div>
-          <div className={styles.whyItem}>
-            <FaLightbulb className={styles.icon} />
-            <h4>Creative Solutions</h4>
-            <p>Our team brings your ideas to life with unique, customized solutions.</p>
-          </div>
-        </div>
-      </section>
+    <WhyChooseUs/>
 
       {/* Our Process */}
       <section className={styles.processSection}>

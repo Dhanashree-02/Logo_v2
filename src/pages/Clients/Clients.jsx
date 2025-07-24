@@ -11,6 +11,8 @@ import client7 from "../../assets/Shree graphics mockup/nexus/bag blue.png";
 import client8 from "../../assets/Shree graphics mockup/nexus/bag blue.png";
 import client9 from "../../assets/Shree graphics mockup/nexus/bag blue.png";
 
+import WhyChooseUs from "../../components/WhyChooseUs/WhyChooseUs"
+
 const Client = () => {
   const navigate = useNavigate();
 
@@ -63,16 +65,7 @@ const Client = () => {
           </ul>
         </div>
 
-        <div className={styles.whyChooseUs}>
-          <h2>Why Choose Us?</h2>
-          <p>We combine creativity, quality, and reliability to help businesses showcase their brand identity. With a team of experienced designers and production specialists, we ensure timely delivery and consistent quality.</p>
-          <ul>
-            <li> High-quality materials and finish</li>
-            <li> Fast turnaround time</li>
-            <li> Customization options</li>
-            <li> Trusted by 100+ companies</li>
-          </ul>
-        </div>
+          <WhyChooseUs />
       </div>
     </section>
   );

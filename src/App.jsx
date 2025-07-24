@@ -1,24 +1,24 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
-import ClientDetails from "./pages/Clients/ClientDetails"; 
+import { Route, BrowserRouter as Router, Routes, useLocation } from "react-router-dom";
+import ClientDetails from "./pages/Clients/ClientDetails";
 
 // Components
-import TopNavbar from "./components/TopNavbar/TopNavbar";
-import MainNavbar from "./components/MainNavbar/MainNavbar";
 import Footer from "./components/Footer/Footer";
+import MainNavbar from "./components/MainNavbar/MainNavbar";
 import Products from "./components/Products/Products";
+import TopNavbar from "./components/TopNavbar/TopNavbar";
 import Wishlist from "./components/Wishlist/Wishlist";
 
 // Pages
-import Home from "./pages/Home/Home";
-import About from "./pages/About/About";
-import Services from "./pages/Services/Services";
-import Clients from "./pages/Clients/Clients";
-import Contact from "./pages/Contact/Contact";
 import Login from "./components/Login/Login";
 import Signup from "./components/Login/Signup";
-import ProductDetails from "./pages/ProductDetails/ProductDetails";
+import About from "./pages/About/About";
 import Cart from "./pages/Cart/Cart";
+import Clients from "./pages/Clients/Clients";
+import Contact from "./pages/Contact/Contact";
+import Home from "./pages/Home/Home";
+import ProductDetails from "./pages/ProductDetails/ProductDetails";
+import Services from "./pages/Services/Services";
 
 // Scroll to top on route change
 const ScrollToTop = () => {
@@ -99,6 +99,7 @@ const App = () => {
           {/* Cart / Wishlist */}
           <Route path="/cart" element={<Cart />} />
           <Route path="/wishlist" element={<Wishlist />} />
+
         </Routes>
       </Layout>
     </Router>

@@ -19,6 +19,7 @@ import Contact from "./pages/Contact/Contact";
 import Home from "./pages/Home/Home";
 import ProductDetails from "./pages/ProductDetails/ProductDetails";
 import Services from "./pages/Services/Services";
+import ServiceDetail from "./pages/Services/ServiceDetail"
 
 // Scroll to top on route change
 const ScrollToTop = () => {
@@ -84,6 +85,8 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/services/:slug" element={<ServiceDetail />} />
+
           <Route path="/clients" element={<Clients />} />
           <Route path="/client/:id" element={<ClientDetails />} />
 
